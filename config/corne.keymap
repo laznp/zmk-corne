@@ -25,6 +25,15 @@
             tapping-term-ms = <200>;
             bindings = <&kp SEMICOLON>, <&kp ESCAPE>;
         };
+
+        lsft_ent: mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp LEFT_SHIFT>, <&kp ENTER>;
+            display-name = "Mod-Tap";
+        };
     };
 
     combos {
