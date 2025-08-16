@@ -29,7 +29,7 @@
 
     combos {
         compatible = "zmk,combos";
-
+        timeout-ms = <200>;
         toggle_layer3 {
             bindings = <&tog 3>;
             key-positions = <7 8 9>;
