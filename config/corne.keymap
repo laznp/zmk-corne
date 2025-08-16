@@ -30,8 +30,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp LEFT_SHIFT>, <&kp ENTER>;
-
+            bindings = <&lsft_ent>;
             display-name = "Mod-Tap";
         };
     };
@@ -46,6 +45,22 @@
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
+
+    macros {
+        lshift: lshift {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp D &kp F>;
+            label = "LSHIFT";
+        };
+
+        fn3: fn3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 3>;
+            label = "FN3";
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
