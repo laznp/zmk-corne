@@ -1,10 +1,10 @@
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-if SHIELD_ENKI42_DONGLE
+if SHIELD_CORNE_DONGLE
 
 config ZMK_KEYBOARD_NAME
-    default "CRKBD Corne"
+    default "CRKBD Corne Dongle"
 
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
     default y
