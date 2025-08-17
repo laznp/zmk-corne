@@ -1,1 +1,3 @@
- name: zmk-keyboard-corne
+build:
+  settings:
+    board_root: .
