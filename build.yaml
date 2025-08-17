@@ -21,7 +21,5 @@ include:
     shield: settings_reset
   - board: seeeduino_xiao_ble
     shield: corne_dongle
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
-    snippet: studio-rpc-usb-uart
   - board: seeeduino_xiao_ble
     shield: settings_reset
