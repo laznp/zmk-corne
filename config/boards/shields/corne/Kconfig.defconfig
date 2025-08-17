@@ -4,9 +4,9 @@
 if SHIELD_CORNE_DONGLE
 
 config ZMK_KEYBOARD_NAME
-    default "Corne Dongle"
+    default "Corne"
 
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
+config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 config ZMK_USB
@@ -14,12 +14,9 @@ config ZMK_USB
 
 endif
 
-if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT || SHIELD_CORNE_DONGLE 
+if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT || SHIELD_CORNE_DONGLE
 
 config ZMK_SPLIT
     default y
 
-config ZMK_BLE
-    default y
-    
 endif
