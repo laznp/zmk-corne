@@ -109,10 +109,10 @@
 
         base {
             bindings = <
-&none  &td_esc_semicolon  &kp W        &kp E           &kp R           &kp T                   &kp Y      &kp U           &kp I           &kp O        &kp P              &none
-&none  &mt LEFT_SHIFT A   &mt LCTRL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &kp G                   &kp H      &mt LEFT_ALT J  &mt LEFT_GUI K  &mt LCTRL L  &td_esc_semicolon  &none
-&none  &kp Z              &kp X        &kp C           &kp V           &kp B                   &kp N      &kp M           &kp COMMA       &kp PERIOD   &kp SLASH          &none
-                                       &none           &mo 2           &mt LEFT_SHIFT ENTER    &kp SPACE  &mo 1           &none
+&none  &kp Q             &kp W        &kp E           &kp R           &kp T                   &kp Y      &kp U           &kp I           &kp O        &kp P              &none
+&none  &mt LEFT_SHIFT A  &mt LCTRL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &kp G                   &kp H      &mt LEFT_ALT J  &mt LEFT_GUI K  &mt LCTRL L  &td_esc_semicolon  &none
+&none  &kp Z             &kp X        &kp C           &kp V           &kp B                   &kp N      &kp M           &kp COMMA       &kp PERIOD   &kp SLASH          &none
+                                      &none           &mo 2           &mt LEFT_SHIFT ENTER    &kp SPACE  &mo 1           &none
             >;
         };
 
