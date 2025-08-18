@@ -8,5 +8,6 @@ features:
   - keys
 siblings:
   - corne_left
+  - corne_left_peripheral
   - corne_right
   - corne_dongle
