@@ -25,7 +25,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_ESC_SEMICOLON";
             #binding-cells = <0>;
-            bindings = <&mt LEFT_SHIFT SEMICOLON>, <&kp ESC>;
+            bindings = <&kp SEMICOLON>, <&kp ESC>;
         };
     };
 
@@ -113,6 +113,7 @@
 &none  &kp A             &kp S        &kp D           &kp F           &kp G                   &kp H      &kp J           &kp K           &kp L        &td_esc_semicolon  &none
 &none  &mt LEFT_SHIFT Z  &mt LCTRL X  &mt LEFT_GUI C  &mt LEFT_ALT V  &kp B                   &kp N      &mt LEFT_ALT M &mt LEFT_GUI COMMA  &mt LCTRL PERIOD  &mt RIGHT_SHIFT SLASH &none
                                      &none           &mo 2           &mt LEFT_SHIFT ENTER    &kp SPACE  &mo 1           &none
+
             >;
         };
 
