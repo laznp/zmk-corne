@@ -153,6 +153,11 @@
             bindings = <&kp LC(LEFT_SHIFT)>;
             key-positions = <31 20 21>;
         };
+
+        qwer_off {
+            bindings = <&soft_off>;
+            key-positions = <1 3 2 4>;
+        };
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
