@@ -27,8 +27,8 @@ include:
 
   # dongle
   - board: seeeduino_xiao_ble
-    shield: dongle_central
-    artifact-name: corne_dongle
+    shield: corne_dongle
+    artifact-name: dongle_central
 
   # reset
   - board: seeeduino_xiao_ble
