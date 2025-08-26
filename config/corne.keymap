@@ -38,47 +38,6 @@
             key-positions = <30 31 32 33>;
         };
 
-        /* sd_gui { */
-        /* bindings = <&kp LEFT_GUI>; */
-        /* key-positions = <15 14>; */
-        /* }; */
-        /* sf_ctrl { */
-        /* bindings = <&kp LCTRL>; */
-        /* key-positions = <16 14>; */
-        /* }; */
-        /* df_shift { */
-        /* bindings = <&kp LEFT_SHIFT>; */
-        /* key-positions = <16 15>; */
-        /* }; */
-        /* sdf_shift_gui { */
-        /* bindings = <&kp LS(LEFT_GUI)>; */
-        /* key-positions = <14 15 16>; */
-        /* }; */
-        /* kl_gui { */
-        /* bindings = <&kp LEFT_GUI>; */
-        /* key-positions = <20 21>; */
-        /* }; */
-        /* jl_ctrl { */
-        /* bindings = <&kp LCTRL>; */
-        /* key-positions = <19 21>; */
-        /* }; */
-        /* jk_shift { */
-        /* bindings = <&kp LEFT_SHIFT>; */
-        /* key-positions = <19 20>; */
-        /* }; */
-        /* jkl_shift_gui { */
-        /* bindings = <&kp LS(LEFT_GUI)>; */
-        /* key-positions = <19 20 21>; */
-        /* }; */
-        /* mkl_shift_ctrl { */
-        /* bindings = <&kp LC(LEFT_SHIFT)>; */
-        /* key-positions = <20 21 31>; */
-        /* }; */
-        /* sdv_shift_ctrl { */
-        /* bindings = <&kp LC(LEFT_SHIFT)>; */
-        /* key-positions = <15 14 28>; */
-        /* }; */
-
         dfjk_caps_lock {
             bindings = <&kp CAPS>;
             key-positions = <16 15 19 20>;
