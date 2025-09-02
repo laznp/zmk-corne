@@ -2,6 +2,8 @@
 if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT || SHIELD_CORNE_LEFT_PERIPHERAL || SHIELD_CORNE_DONGLE
 config ZMK_SPLIT
     default y
+config ZMK_SPLIT_BLE
+    default y
 endif
 
 # Dongle: Central role and battery proxy
