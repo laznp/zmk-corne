@@ -43,10 +43,15 @@
             key-positions = <16 15 19 20>;
         };
 
-        /* we_esc { */
-            /* bindings = <&kp ESCAPE>; */
-            /* key-positions = <3 2>; */
-        /* }; */
+        we_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <3 2>;
+        };
+
+        xc_tab {
+            bindings = <&kp TAB>;
+            key-positions = <26 27>;
+        };
 
         sd_gui {
             bindings = <&kp LEFT_GUI>;
@@ -73,20 +78,15 @@
             key-positions = <14 15 28>;
         };
 
-        /* xc_tab { */
-            /* bindings = <&kp TAB>; */
-            /* key-positions = <26 27>; */
-        /* }; */
+        io_bspc {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <9 8>;
+        };
 
-        /* io_bspc { */
-            /* bindings = <&kp BACKSPACE>; */
-            /* key-positions = <9 8>; */
-        /* }; */
-
-        /* ioj_del { */
-            /* bindings = <&kp DELETE>; */
-            /* key-positions = <8 9 19>; */
-        /* }; */
+        ioj_del {
+            bindings = <&kp DELETE>;
+            key-positions = <32 33>;
+        };
 
         kl_gui {
             bindings = <&kp LEFT_GUI>;
@@ -128,9 +128,9 @@
 
         base {
             bindings = <
-&kp ESC  &kp Q  &kp W  &kp E  &kp R  &kp T        &kp Y      &kp U  &kp I      &kp O       &kp P          &kp BSPC
-&kp TAB  &kp A  &kp S  &kp D  &kp F  &kp G        &kp H      &kp J  &kp K      &kp L       &kp SEMICOLON  &none
-&mo 2    &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N      &kp M  &kp COMMA  &kp PERIOD  &kp SLASH      &kp DEL
+&none  &kp Q  &kp W  &kp E  &kp R  &kp T        &kp Y      &kp U  &kp I      &kp O       &kp P          &none
+&none  &kp A  &kp S  &kp D  &kp F  &kp G        &kp H      &kp J  &kp K      &kp L       &kp SEMICOLON  &none
+&none  &kp Z  &kp X  &kp C  &kp V  &kp B        &kp N      &kp M  &kp COMMA  &kp PERIOD  &kp SLASH      &none
                      &none  &mo 1  &kp ENTER    &kp SPACE  &mo 1  &none
             >;
         };
