@@ -14,26 +14,26 @@
 ---
 include:
   # board
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_left
     artifact-name: corne_left
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_left_peripheral
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: corne_left_peripheral
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_right
     artifact-name: corne_right_peripheral
 
   # dongle
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: corne_dongle
     artifact-name: dongle_central
 
   # reset
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: settings_reset
     artifact-name: dongle_reset
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
     artifact-name: corne_reset
