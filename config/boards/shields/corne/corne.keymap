@@ -152,7 +152,7 @@
 &none  &kp ESC         &kp Q  &kp W      &kp E      &kp R        &trans        &trans        &trans        &trans      &trans  &none
 &none  &kp TAB         &kp A  &kp S      &kp D      &kp F        &trans        &trans        &trans        &trans      &trans  &none
 &none  &kp LCTRL       &kp Z  &kp X      &kp C      &kp V        &trans        &trans        &trans        &trans      &trans  &none
-                              &mo 3      &kp ENTER  &kp SPACE        &trans        &trans        &none
+                              &kp ENTER  &mo 3      &kp SPACE        &trans        &trans        &none
             >;
         };
 
