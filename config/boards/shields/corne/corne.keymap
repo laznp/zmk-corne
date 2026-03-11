@@ -53,20 +53,20 @@
             key-positions = <26 27>;
         };
 
-        sd_gui {
-            bindings = <&kp LEFT_GUI>;
-            key-positions = <14 15>;
-        };
+        /* sd_gui { */
+            /* bindings = <&kp LEFT_GUI>; */
+            /* key-positions = <14 15>; */
+        /* }; */
 
         df_sft {
             bindings = <&kp LEFT_SHIFT>;
             key-positions = <15 16>;
         };
 
-        sf_ctl {
-            bindings = <&kp LCTRL>;
-            key-positions = <14 16>;
-        };
+        /* sf_ctl { */
+            /* bindings = <&kp LCTRL>; */
+            /* key-positions = <14 16>; */
+        /* }; */
 
         sdf_sftgui {
             bindings = <&kp LG(LEFT_SHIFT)>;
