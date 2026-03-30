@@ -20,7 +20,7 @@
 &soft_off { hold-time-ms = <2000>; };
 
 / {
-    behaviors {
+    /* behaviors { */
         /* td_esc_semicolon: td_esc_semicolon { */
             /* compatible = "zmk,behavior-tap-dance"; */
             /* label = "TD_ESC_SEMICOLON"; */
@@ -28,14 +28,14 @@
             /* bindings = <&kp SEMICOLON>, <&kp ESC>; */
         /* }; */
 
-        bspc_del: backspace_delete {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-            keep-mods = <(MOD_RSFT)>;
-        };
-    };
+        /* bspc_del: backspace_delete { */
+            /* compatible = "zmk,behavior-mod-morph"; */
+            /* #binding-cells = <0>; */
+            /* bindings = <&kp BACKSPACE>, <&kp DELETE>; */
+            /* mods = <(MOD_LSFT|MOD_RSFT)>; */
+            /* keep-mods = <(MOD_RSFT)>; */
+        /* }; */
+    /* }; */
 
     combos {
         compatible = "zmk,combos";
@@ -86,15 +86,15 @@
             key-positions = <14 15 28>;
         };
 
-        /* io_bspc { */
-            /* bindings = <&kp BACKSPACE>; */
-            /* key-positions = <9 8>; */
-        /* }; */
+        io_bspc {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <9 8>;
+        };
 
-        /* ioj_del { */
-            /* bindings = <&kp DELETE>; */
-            /* key-positions = <32 33>; */
-        /* }; */
+        ioj_del {
+            bindings = <&kp DELETE>;
+            key-positions = <32 33>;
+        };
 
         /* kl_gui { */
             /* bindings = <&kp LEFT_GUI>; */
@@ -147,7 +147,7 @@
 
         symbols {
             bindings = <
-&none  &kp GRAVE        &kp N7  &kp N8  &kp N9    &kp N0        &kp C_VOLUME_UP    &trans        &kp MINUS     &kp EQUAL     &bspc_del         &none
+&none  &kp GRAVE        &kp N7  &kp N8  &kp N9    &kp N0        &kp C_VOLUME_UP    &trans        &kp MINUS     &kp EQUAL     &trans            &none
 &none  &kp LBKT         &kp N4  &kp N5  &kp N6    &kp RBKT      &kp LEFT           &kp DOWN      &kp UP        &kp RIGHT     &kp SINGLE_QUOTE  &none
 &none  &kp PRINTSCREEN  &kp N1  &kp N2  &kp N3    &trans        &kp C_VOLUME_DOWN  &trans        &trans        &trans        &kp BSLH          &none
                                       &trans      &kp LEFT_SHIFT  &trans        &trans    &kp LEFT_SHIFT         &trans
