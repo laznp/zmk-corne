@@ -1,4 +1,4 @@
-Name: Build Firmware
+name: Build Firmware
 
 on: [push, pull_request, workflow_dispatch]
 
