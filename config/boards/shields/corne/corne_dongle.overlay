@@ -5,31 +5,8 @@
  */
 
 #ifdef CONFIG_BOARD_NICE_NANO_V2
-
-&pro_micro_i2c {
-    status = "okay";
-
-    oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <32>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <31>;
-        segment-remap;
-        com-invdir;
-        prechargep = <0x22>;
-    };
-};
-
-/ {
-    chosen {
-        zephyr,display = &oled;
-    };
-};
-
+/* i2c_oled shield uses &xiao_i2c — alias to pro_micro_i2c for nice_nano */
+xiao_i2c: &pro_micro_i2c {};
 #endif /* CONFIG_BOARD_NICE_NANO_V2 */
 
 #include <dt-bindings/zmk/matrix_transform.h>

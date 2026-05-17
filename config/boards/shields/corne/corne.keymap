@@ -175,3 +175,11 @@
         };
     };
 };
+
+#if defined(CONFIG_BOARD_NICE_NANO_V2) && defined(CONFIG_SHIELD_CORNE_DONGLE)
+/* Override i2c_oled defaults for 128x32 display */
+&oled {
+    height = <32>;
+    multiplex-ratio = <31>;
+};
+#endif
