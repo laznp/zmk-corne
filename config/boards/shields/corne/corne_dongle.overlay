@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#ifdef CONFIG_BOARD_NICE_NANO_V2
+
 &pro_micro_i2c {
     status = "okay";
 
@@ -21,6 +23,14 @@
         prechargep = <0x22>;
     };
 };
+
+/ {
+    chosen {
+        zephyr,display = &oled;
+    };
+};
+
+#endif /* CONFIG_BOARD_NICE_NANO_V2 */
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
@@ -63,7 +73,7 @@
         };
     };
     chosen {
-        zephyr,display = &oled;
+        /* zephyr,display = &oled; */
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
     };
