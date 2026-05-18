@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <lvgl.h>
+
 #include <zephyr/kernel.h>
 
 #include <zephyr/logging/log.h>
@@ -57,7 +59,7 @@ enum selection_line_state {
     selection_line_state_bt
 } current_selection_line_state;
 
-lv_point_precise_t selection_line_points[] = { {0, 0}, {0, 0} };
+lv_point_t selection_line_points[] = { {0, 0}, {0, 0} };
 
 struct output_status_state {
     struct zmk_endpoint_instance selected_endpoint;

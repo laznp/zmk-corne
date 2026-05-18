@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <lvgl.h>
+
 #include <zephyr/kernel.h>
 #include <zephyr/bluetooth/services/bas.h>
 

@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include <lvgl.h>
+
 #include <zephyr/kernel.h>
 #include <zephyr/bluetooth/services/bas.h>
 
@@ -144,7 +146,7 @@ int zmk_widget_modifiers_init(struct zmk_widget_modifiers *widget, lv_obj_t *par
     lv_style_init(&style_line);
     lv_style_set_line_width(&style_line, 2);
 
-    static const lv_point_precise_t selection_line_points[] = { {0, 0}, {SIZE_SYMBOLS, 0} };
+    static const lv_point_t selection_line_points[] = { {0, 0}, {SIZE_SYMBOLS, 0} };
 
     for (int i = 0; i < NUM_SYMBOLS; i++) {
         modifier_symbols[i]->symbol = lv_img_create(widget->obj);
