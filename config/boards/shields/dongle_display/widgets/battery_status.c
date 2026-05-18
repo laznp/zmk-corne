@@ -100,7 +100,8 @@ static void set_battery_symbol(lv_obj_t *widget, struct battery_state state) {
     set_battery_level(symbol, state.level, state.usb_present);
 
     char level_text[8];
-    snprintf(level_text, sizeof(level_text), "%u%%", state.level);
+    snprintf(level_text, sizeof(level_text), "%c%u%%",
+             state.source == 0 ? 'L' : 'R', state.level);
     lv_label_set_text(label, level_text);
 
     if (state.level > 0 || state.usb_present) {
