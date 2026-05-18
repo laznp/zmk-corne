@@ -25,14 +25,14 @@ static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 static int64_t last_anim_update_time = 0;
 #define ANIM_UPDATE_INTERVAL_MS 200  // Throttle: max 5 animation checks per second
 
-LV_IMG_DECLARE(bongo_cat_none);
-LV_IMG_DECLARE(bongo_cat_left1);
-LV_IMG_DECLARE(bongo_cat_left2);
-LV_IMG_DECLARE(bongo_cat_right1);
-LV_IMG_DECLARE(bongo_cat_right2);
-LV_IMG_DECLARE(bongo_cat_both1);
-LV_IMG_DECLARE(bongo_cat_both1_open);
-LV_IMG_DECLARE(bongo_cat_both2);
+extern const lv_img_dsc_t bongo_cat_none;
+extern const lv_img_dsc_t bongo_cat_left1;
+extern const lv_img_dsc_t bongo_cat_left2;
+extern const lv_img_dsc_t bongo_cat_right1;
+extern const lv_img_dsc_t bongo_cat_right2;
+extern const lv_img_dsc_t bongo_cat_both1;
+extern const lv_img_dsc_t bongo_cat_both1_open;
+extern const lv_img_dsc_t bongo_cat_both2;
 
 #define ANIMATION_SPEED_IDLE 10000
 const lv_img_dsc_t *idle_imgs[] = {

@@ -25,16 +25,16 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #endif
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
-LV_IMG_DECLARE(sym_usb);
-LV_IMG_DECLARE(sym_bt);
-LV_IMG_DECLARE(sym_ok);
-LV_IMG_DECLARE(sym_nok);
-LV_IMG_DECLARE(sym_open);
-LV_IMG_DECLARE(sym_1);
-LV_IMG_DECLARE(sym_2);
-LV_IMG_DECLARE(sym_3);
-LV_IMG_DECLARE(sym_4);
-LV_IMG_DECLARE(sym_5);
+extern const lv_img_dsc_t sym_usb;
+extern const lv_img_dsc_t sym_bt;
+extern const lv_img_dsc_t sym_ok;
+extern const lv_img_dsc_t sym_nok;
+extern const lv_img_dsc_t sym_open;
+extern const lv_img_dsc_t sym_1;
+extern const lv_img_dsc_t sym_2;
+extern const lv_img_dsc_t sym_3;
+extern const lv_img_dsc_t sym_4;
+extern const lv_img_dsc_t sym_5;
 
 const lv_img_dsc_t *sym_num[] = {
     &sym_1,

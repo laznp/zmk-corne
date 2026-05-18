@@ -14,7 +14,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "wpm_status.h"
 
-LV_IMG_DECLARE(sym_speedometer);
+extern const lv_img_dsc_t sym_speedometer;
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 static int last_wpm = -1;

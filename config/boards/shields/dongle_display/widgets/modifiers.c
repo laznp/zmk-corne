@@ -32,26 +32,26 @@ struct modifier_symbol {
     bool is_active;
 };
 
-LV_IMG_DECLARE(control_icon);
+extern const lv_img_dsc_t control_icon;
 struct modifier_symbol ms_control = {
     .modifier = MOD_LCTL | MOD_RCTL,
     .symbol_dsc = &control_icon,
 };
 
-LV_IMG_DECLARE(shift_icon);
+extern const lv_img_dsc_t shift_icon;
 struct modifier_symbol ms_shift = {
     .modifier = MOD_LSFT | MOD_RSFT,
     .symbol_dsc = &shift_icon,
 };
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_MAC_MODIFIERS)
-LV_IMG_DECLARE(opt_icon);
+extern const lv_img_dsc_t opt_icon;
 struct modifier_symbol ms_opt = {
     .modifier = MOD_LALT | MOD_RALT,
     .symbol_dsc = &opt_icon,
 };
 
-LV_IMG_DECLARE(cmd_icon);
+extern const lv_img_dsc_t cmd_icon;
 struct modifier_symbol ms_cmd = {
     .modifier = MOD_LGUI | MOD_RGUI,
     .symbol_dsc = &cmd_icon,
@@ -65,13 +65,13 @@ struct modifier_symbol *modifier_symbols[] = {
     &ms_shift
 };
 #else
-LV_IMG_DECLARE(alt_icon);
+extern const lv_img_dsc_t alt_icon;
 struct modifier_symbol ms_alt = {
     .modifier = MOD_LALT | MOD_RALT,
     .symbol_dsc = &alt_icon,
 };
 
-LV_IMG_DECLARE(win_icon);
+extern const lv_img_dsc_t win_icon;
 struct modifier_symbol ms_win = {
     .modifier = MOD_LGUI | MOD_RGUI,
     .symbol_dsc = &win_icon,
