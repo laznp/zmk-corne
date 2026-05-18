@@ -47,6 +47,11 @@ lv_style_t global_style;
 
 lv_obj_t *zmk_display_status_screen() {
     lv_obj_t *screen;
+
+    /* Rotate 90° for portrait (32x128) display.
+     * Change to LV_DISP_ROT_270 if text is upside down. */
+    lv_disp_set_rotation(lv_disp_get_default(), LV_DISP_ROT_90);
+
     screen = lv_obj_create(NULL);
 
     lv_style_init(&global_style);
@@ -65,7 +70,9 @@ lv_obj_t *zmk_display_status_screen() {
 
 #if IS_ENABLED(CONFIG_ZMK_BATTERY)
     zmk_widget_dongle_battery_status_init(&dongle_battery_status_widget, screen);
-    lv_obj_align(zmk_widget_dongle_battery_status_obj(&dongle_battery_status_widget), LV_ALIGN_TOP_RIGHT, 0, 0);
+    lv_obj_align_to(zmk_widget_dongle_battery_status_obj(&dongle_battery_status_widget),
+                    zmk_widget_output_status_obj(&output_status_widget),
+                    LV_ALIGN_OUT_BOTTOM_LEFT, 0, 2);
 #endif
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_LAYER)

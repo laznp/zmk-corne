@@ -88,20 +88,20 @@ static struct output_status_state get_state(const zmk_event_t *_eh) {
     return st;
 }
 
-static void anim_x_cb(void * var, int32_t v) {
-    lv_obj_set_x(var, v);
+static void anim_y_cb(void * var, int32_t v) {
+    lv_obj_set_y(var, v);
 }
 
 static void anim_size_cb(void * var, int32_t v) {
     selection_line_points[1].x = v;
 }
 
-static void move_object_x(void *obj, int32_t from, int32_t to) {
+static void move_object_y(void *obj, int32_t from, int32_t to) {
     lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_var(&a, obj);
     lv_anim_set_time(&a, 200);
-    lv_anim_set_exec_cb(&a, anim_x_cb);
+    lv_anim_set_exec_cb(&a, anim_y_cb);
     lv_anim_set_path_cb(&a, lv_anim_path_overshoot);
     lv_anim_set_values(&a, from, to);
     lv_anim_start(&a);
@@ -131,14 +131,14 @@ static void set_status_symbol(lv_obj_t *widget, struct output_status_state state
     switch (transport) {
     case ZMK_TRANSPORT_USB:
         if (current_selection_line_state != selection_line_state_usb) {
-            move_object_x(selection_line, lv_obj_get_x(bt) - 1, lv_obj_get_x(usb) - 1);
+            move_object_y(selection_line, lv_obj_get_y(bt) - 2, lv_obj_get_y(usb) - 2);
             change_size_object(selection_line, 18, 11);
             current_selection_line_state = selection_line_state_usb;
         }
         break;
     case ZMK_TRANSPORT_BLE:
         if (current_selection_line_state != selection_line_state_bt) {
-            move_object_x(selection_line, lv_obj_get_x(usb) - 1, lv_obj_get_x(bt) - 1);
+            move_object_y(selection_line, lv_obj_get_y(usb) - 2, lv_obj_get_y(bt) - 2);
             change_size_object(selection_line, 11, 18);
             current_selection_line_state = selection_line_state_bt;
         }
@@ -186,22 +186,27 @@ int zmk_widget_output_status_init(struct zmk_widget_output_status *widget, lv_ob
 
     lv_obj_set_size(widget->obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
 
+    /* Vertical layout for 32px width:
+     * Row 1: [USB icon]
+     * Row 2:   [USB status]
+     * Row 3: [BT icon] [num] [status]
+     */
     lv_obj_t *usb = lv_img_create(widget->obj);
-    lv_obj_align(usb, LV_ALIGN_TOP_LEFT, 1, 4);
+    lv_obj_align(usb, LV_ALIGN_TOP_LEFT, 1, 1);
     lv_img_set_src(usb, &sym_usb);
 
     lv_obj_t *usb_hid_status = lv_img_create(widget->obj);
-    lv_obj_align_to(usb_hid_status, usb, LV_ALIGN_BOTTOM_LEFT, 2, -7);
+    lv_obj_align_to(usb_hid_status, usb, LV_ALIGN_OUT_BOTTOM_LEFT, 2, -2);
 
     lv_obj_t *bt = lv_img_create(widget->obj);
-    lv_obj_align_to(bt, usb, LV_ALIGN_OUT_RIGHT_TOP, 6, 0);
+    lv_obj_align_to(bt, usb_hid_status, LV_ALIGN_OUT_BOTTOM_LEFT, -2, 2);
     lv_img_set_src(bt, &sym_bt);
 
     lv_obj_t *bt_number = lv_img_create(widget->obj);
-    lv_obj_align_to(bt_number, bt, LV_ALIGN_OUT_RIGHT_TOP, 2, 7);
+    lv_obj_align_to(bt_number, bt, LV_ALIGN_OUT_RIGHT_MID, 2, 0);
 
     lv_obj_t *bt_status = lv_img_create(widget->obj);
-    lv_obj_align_to(bt_status, bt, LV_ALIGN_OUT_RIGHT_TOP, 2, 1);
+    lv_obj_align_to(bt_status, bt_number, LV_ALIGN_OUT_RIGHT_MID, 2, 0);
     
     static lv_style_t style_line;
     lv_style_init(&style_line);
@@ -211,7 +216,7 @@ int zmk_widget_output_status_init(struct zmk_widget_output_status *widget, lv_ob
     selection_line = lv_line_create(widget->obj);
     lv_line_set_points(selection_line, selection_line_points, 2);
     lv_obj_add_style(selection_line, &style_line, 0);
-    lv_obj_align_to(selection_line, usb, LV_ALIGN_OUT_TOP_LEFT, 3, -2);
+    lv_obj_align_to(selection_line, usb, LV_ALIGN_OUT_TOP_LEFT, 1, -2);
  
     sys_slist_append(&widgets, &widget->node);
 
