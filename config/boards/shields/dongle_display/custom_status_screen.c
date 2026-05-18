@@ -21,10 +21,6 @@ static struct zmk_widget_dongle_battery_status dongle_battery_status_widget;
 lv_obj_t *zmk_display_status_screen() {
     lv_obj_t *screen;
 
-    /* Rotate 90° for portrait (32x128) display.
-     * Change to LV_DISP_ROT_270 if text is upside down. */
-    lv_disp_set_rotation(lv_disp_get_default(), LV_DISP_ROT_90);
-
     screen = lv_obj_create(NULL);
 
 #if IS_ENABLED(CONFIG_ZMK_WIDGET_OUTPUT_STATUS)
