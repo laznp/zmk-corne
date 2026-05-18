@@ -39,7 +39,7 @@ endchoice
 if LVGL
 
 config LV_Z_VDB_SIZE
-    default 32
+    default 64
 
 config LV_DPI_DEF
     default 148
