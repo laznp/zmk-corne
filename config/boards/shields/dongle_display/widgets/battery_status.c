@@ -100,7 +100,7 @@ static void set_battery_symbol(lv_obj_t *widget, struct battery_state state) {
     set_battery_level(symbol, state.level, state.usb_present);
 
     char level_text[8];
-    snprintf(level_text, sizeof(level_text), "%4u%% ", state.level);
+    snprintf(level_text, sizeof(level_text), "%u%%", state.level);
     lv_label_set_text(label, level_text);
 
     if (state.level > 0 || state.usb_present) {
@@ -172,8 +172,8 @@ int zmk_widget_dongle_battery_status_init(struct zmk_widget_dongle_battery_statu
 
         lv_img_set_src(battery_img, &batt_empty);
 
-        lv_obj_align(battery_img, LV_ALIGN_TOP_RIGHT, 0, i * 10);
-        lv_obj_align_to(battery_label, battery_img, LV_ALIGN_OUT_LEFT_MID, 0, 0);
+        lv_obj_align(battery_img, LV_ALIGN_TOP_LEFT, 1, i * 10);
+        lv_obj_align_to(battery_label, battery_img, LV_ALIGN_OUT_RIGHT_MID, 2, 0);
 
         lv_obj_add_flag(battery_img, LV_OBJ_FLAG_HIDDEN);
         lv_obj_add_flag(battery_label, LV_OBJ_FLAG_HIDDEN);
