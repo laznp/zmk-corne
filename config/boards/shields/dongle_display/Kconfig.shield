@@ -1,0 +1,12 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_DONGLE_DISPLAY
+	def_bool $(shields_list_contains,dongle_display)
+
+if SHIELD_DONGLE_DISPLAY
+
+config ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
+	default y
+
+endif # SHIELD_DONGLE_DISPLAY
