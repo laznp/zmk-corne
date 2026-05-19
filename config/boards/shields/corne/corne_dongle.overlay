@@ -19,6 +19,7 @@
         segment-remap;
         com-invdir;
         com-sequential;
+        invert-colors;
         prechargep = <0xf1>;
     };
 };
