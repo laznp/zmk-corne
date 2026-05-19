@@ -178,7 +178,7 @@ int zmk_widget_output_status_init(struct zmk_widget_output_status *widget, lv_ob
 
     /* BT row (bottom): directly below USB icon */
     lv_obj_t *bt = lv_img_create(widget->obj);
-    lv_obj_align_to(bt, usb, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 2);
+    lv_obj_align_to(bt, usb, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 4);
     lv_img_set_src(bt, &sym_bt);
 
     lv_obj_t *bt_number = lv_img_create(widget->obj);
