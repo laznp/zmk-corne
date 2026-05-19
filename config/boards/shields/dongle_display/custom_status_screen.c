@@ -24,7 +24,7 @@ static struct zmk_widget_layer_status layer_status_widget;
 #endif
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_MODIFIERS)
-static struct zmk_widget_modifiers_widget;
+static struct zmk_widget_modifiers modifiers_widget;
 #if IS_ENABLED(CONFIG_ZMK_HID_INDICATORS)
 static struct zmk_widget_hid_indicators hid_indicators_widget;
 #endif
