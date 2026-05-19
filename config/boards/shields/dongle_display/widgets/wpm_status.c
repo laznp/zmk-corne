@@ -82,11 +82,11 @@ int zmk_widget_wpm_status_init(struct zmk_widget_wpm_status *widget, lv_obj_t *p
     lv_obj_set_size(widget->obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
 
     lv_obj_t *speedometer = lv_img_create(widget->obj);
-    lv_obj_align(speedometer, LV_ALIGN_TOP_MID, 0, 0);
+    lv_obj_align(speedometer, LV_ALIGN_TOP_LEFT, 0, 0);
     lv_img_set_src(speedometer, &sym_speedometer);
 
     widget->wpm_label = lv_label_create(widget->obj);
-    lv_obj_align_to(widget->wpm_label, speedometer, LV_ALIGN_OUT_BOTTOM_MID, 0, 2);
+    lv_obj_align_to(widget->wpm_label, speedometer, LV_ALIGN_OUT_RIGHT_MID, 2, 1);
 
     sys_slist_append(&widgets, &widget->node);
 
