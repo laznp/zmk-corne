@@ -86,18 +86,6 @@ static void draw_battery(lv_obj_t *canvas, uint8_t level, bool usb_present) {
     }
 }
 
-static const char *battery_prefix(uint8_t source) {
-#if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_DONGLE_BATTERY)
-    if (source == 0) return "D:";
-    source -= SOURCE_OFFSET;
-#endif
-    switch (source) {
-    case 0: return "L:";
-    case 1: return "R:";
-    default: return "?:";
-    }
-}
-
 static void set_battery_symbol(lv_obj_t *widget, struct battery_state state) {
     if (state.source >= ZMK_SPLIT_BLE_PERIPHERAL_COUNT + SOURCE_OFFSET) {
         return;
@@ -107,7 +95,7 @@ static void set_battery_symbol(lv_obj_t *widget, struct battery_state state) {
     lv_obj_t *label = battery_objects[state.source].label;
 
     draw_battery(symbol, state.level, state.usb_present);
-    lv_label_set_text_fmt(label, "%s%u", battery_prefix(state.source), state.level);
+    lv_label_set_text_fmt(label, "%4u%% ", state.level);
     
     if (state.level > 0 || state.usb_present) {
         lv_obj_clear_flag(symbol, LV_OBJ_FLAG_HIDDEN);
