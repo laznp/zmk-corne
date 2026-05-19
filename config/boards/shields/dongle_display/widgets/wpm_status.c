@@ -1,7 +1,5 @@
-#include <lvgl.h>
-
 #include <zephyr/kernel.h>
- 
+
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
@@ -14,7 +12,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "wpm_status.h"
 
-extern const lv_img_dsc_t sym_speedometer;
+LV_IMG_DECLARE(sym_speedometer);
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 static int last_wpm = -1;

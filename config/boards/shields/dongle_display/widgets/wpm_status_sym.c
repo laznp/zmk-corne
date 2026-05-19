@@ -11,6 +11,9 @@
 #endif
 
 const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SPEEDOMETER uint8_t sym_speedometer_map[] = {
+  0x00, 0x00, 0x00, 0x00, 	/*Color of index 0*/
+  0x00, 0x00, 0x00, 0xff, 	/*Color of index 1*/
+
   0x00, 0x00, 
   0x00, 0x00, 
   0x00, 0x00, 
@@ -28,9 +31,9 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SPEEDOMET
 };
 
 const lv_img_dsc_t sym_speedometer = {
-  .header.cf = LV_IMG_CF_ALPHA_1BIT,
+  .header.cf = LV_COLOR_FORMAT_I1,
   .header.w = 14,
   .header.h = 14,
-  .data_size = 28,
+  .data_size = 36,
   .data = sym_speedometer_map,
 };
