@@ -59,6 +59,14 @@ lv_obj_t *zmk_display_status_screen() {
     zmk_widget_output_status_init(&output_status_widget, screen);
     lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
 
+    lv_obj_t *label_top = lv_label_create(screen);
+    lv_label_set_text(label_top, "PapaGondrong");
+    lv_obj_align(label_top, LV_ALIGN_TOP_MID, 0, 0);
+
+    lv_obj_t *label_bot = lv_label_create(screen);
+    lv_label_set_text(label_bot, "Property");
+    lv_obj_align(label_bot, LV_ALIGN_BOTTOM_MID, 0, 0);
+
 #if IS_ENABLED(CONFIG_ZMK_BATTERY)
     zmk_widget_dongle_battery_status_init(&dongle_battery_status_widget, screen);
     lv_obj_align(zmk_widget_dongle_battery_status_obj(&dongle_battery_status_widget),
