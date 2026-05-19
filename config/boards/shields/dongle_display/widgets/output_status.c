@@ -61,7 +61,6 @@ lv_point_t selection_line_points[] = { {0, 0}, {0, 0} };
 
 struct output_status_state {
     struct zmk_endpoint_instance selected_endpoint;
-    enum zmk_transport preferred_transport;
     int active_profile_index;
     bool active_profile_connected;
     bool active_profile_bonded;
@@ -71,8 +70,7 @@ struct output_status_state {
 static struct output_status_state get_state(const zmk_event_t *_eh) {
     struct output_status_state st;
 
-    st.selected_endpoint = zmk_endpoint_get_selected();
-    st.preferred_transport = zmk_endpoint_get_preferred_transport();
+    st.selected_endpoint = zmk_endpoints_selected();
 
 #if IS_ENABLED(CONFIG_ZMK_BLE)
     st.active_profile_index     = zmk_ble_active_profile_index();
@@ -127,11 +125,6 @@ static void set_status_symbol(lv_obj_t *widget, struct output_status_state state
     lv_obj_t *selection_line = lv_obj_get_child(widget, output_symbol_selection_line);
 
     enum zmk_transport transport = state.selected_endpoint.transport;
-    bool connected = transport != ZMK_TRANSPORT_NONE;
-
-    if (!connected) {
-        transport = state.preferred_transport;
-    }
 
     switch (transport) {
     case ZMK_TRANSPORT_USB:
@@ -148,18 +141,9 @@ static void set_status_symbol(lv_obj_t *widget, struct output_status_state state
             current_selection_line_state = selection_line_state_bt;
         }
         break;
-    case ZMK_TRANSPORT_NONE:
-        if (current_selection_line_state != selection_line_state_none) {
-            if (current_selection_line_state == selection_line_state_usb) {
-                change_size_object(selection_line, 11, 0);
-            } else {
-                change_size_object(selection_line, 18, 0);
-            }
-            current_selection_line_state = selection_line_state_none;
-        }
     }
 
-    if (state.usb_is_hid_ready && connected) {
+    if (state.usb_is_hid_ready) {
         lv_img_set_src(usb_hid_status, &sym_ok);
     } else {
         lv_img_set_src(usb_hid_status, &sym_nok);
