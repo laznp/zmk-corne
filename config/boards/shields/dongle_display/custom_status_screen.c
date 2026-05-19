@@ -49,6 +49,7 @@ lv_obj_t *zmk_display_status_screen() {
     lv_obj_add_style(screen, &global_style, LV_PART_MAIN);
 
     // Portrait layout: 32px wide x 128px tall
+    lv_disp_set_rotation(lv_disp_get_default(), LV_DISP_ROT_90);
 
     // output_status: top of screen
     zmk_widget_output_status_init(&output_status_widget, screen);
