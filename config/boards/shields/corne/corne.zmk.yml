@@ -1,8 +1,8 @@
 file_format: "1"
-id: fifi
-name: Fifi
+id: corne
+name: Corne
 type: shield
-url: https://github.com/raychengy/fifi_split_keeb
+url: https://github.com/foostan/crkbd
 requires: [pro_micro]
 features:
   - keys

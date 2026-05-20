@@ -13,7 +13,7 @@
 #
 ---
 include:
-  # board
+  # corne peripherals (nice_nano_v2, 6col)
   - board: nice_nano_v2
     shield: corne_left
     artifact-name: corne_left
@@ -23,17 +23,26 @@ include:
     artifact-name: corne_left_peripheral
   - board: nice_nano_v2
     shield: corne_right
-    artifact-name: corne_right_peripheral
+    artifact-name: corne_right
+
+  # fifi peripherals (nice_nano_v2, 5col)
+  - board: nice_nano_v2
+    shield: fifi_left
+    artifact-name: fifi_left
+  - board: nice_nano_v2
+    shield: fifi_right
+    artifact-name: fifi_right
 
   # dongle - corne (xiao ble, zmk studio enabled)
   - board: seeeduino_xiao_ble
     shield: corne_dongle
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_USB=y
-    artifact-name: dongle_central_xiao
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: corne_dongle
   # dongle - fifi (nice nano v2, with display)
   - board: nice_nano_v2
-    shield: corne_dongle dongle_display
-    artifact-name: dongle_central_nice_nano
+    shield: fifi_dongle dongle_display
+    artifact-name: fifi_dongle
 
   # reset
   - board: seeeduino_xiao_ble
