@@ -5,7 +5,7 @@
  */
 
 #include "custom_status_screen.h"
-#include "widgets/battery_status.h"
+#include "widgets/peripheral_status.h"
 #include "widgets/layer_status.h"
 #include "widgets/output_status.h"
 #include "widgets/hid_indicators.h"
@@ -16,9 +16,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 static struct zmk_widget_output_status output_status_widget;
 
-#if IS_ENABLED(CONFIG_ZMK_BATTERY)
-static struct zmk_widget_dongle_battery_status dongle_battery_status_widget;
-#endif
+static struct zmk_widget_peripheral_status peripheral_status_widget;
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_LAYER)
 static struct zmk_widget_layer_status layer_status_widget;
@@ -63,11 +61,9 @@ lv_obj_t *zmk_display_status_screen() {
     lv_label_set_text(label_mid, "Laz");
     lv_obj_align(label_mid, LV_ALIGN_CENTER, 0, 0);
 
-#if IS_ENABLED(CONFIG_ZMK_BATTERY)
-    zmk_widget_dongle_battery_status_init(&dongle_battery_status_widget, screen);
-    lv_obj_align(zmk_widget_dongle_battery_status_obj(&dongle_battery_status_widget),
+    zmk_widget_peripheral_status_init(&peripheral_status_widget, screen);
+    lv_obj_align(zmk_widget_peripheral_status_obj(&peripheral_status_widget),
                  LV_ALIGN_RIGHT_MID, 0, 0);
-#endif
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_WPM)
     zmk_widget_wpm_status_init(&wpm_status_widget, screen);
