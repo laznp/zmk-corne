@@ -57,9 +57,9 @@ lv_obj_t *zmk_display_status_screen() {
     zmk_widget_output_status_init(&output_status_widget, screen);
     lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
 
-    lv_obj_t *label_mid = lv_label_create(screen);
-    lv_label_set_text(label_mid, "Laz");
-    lv_obj_align(label_mid, LV_ALIGN_CENTER, 0, 0);
+    lv_obj_t *label_top = lv_label_create(screen);
+    lv_label_set_text(label_top, "Laz");
+    lv_obj_align(label_top, LV_ALIGN_TOP_MID, 0, 0);
 
     zmk_widget_peripheral_status_init(&peripheral_status_widget, screen);
     lv_obj_align(zmk_widget_peripheral_status_obj(&peripheral_status_widget),
@@ -78,7 +78,7 @@ lv_obj_t *zmk_display_status_screen() {
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_LAYER)
     zmk_widget_layer_status_init(&layer_status_widget, screen);
-    lv_obj_align(zmk_widget_layer_status_obj(&layer_status_widget), LV_ALIGN_BOTTOM_LEFT, 22, 0);
+    lv_obj_align(zmk_widget_layer_status_obj(&layer_status_widget), LV_ALIGN_BOTTOM_MID, 0, 0);
 #endif
 
     return screen;
