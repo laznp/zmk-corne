@@ -28,7 +28,7 @@ include:
   # dongle - corne (xiao ble, zmk studio enabled)
   - board: seeeduino_xiao_ble
     shield: corne_dongle
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_USB=y
     artifact-name: dongle_central_xiao
   # dongle - fifi (nice nano v2, with display)
   - board: nice_nano_v2
