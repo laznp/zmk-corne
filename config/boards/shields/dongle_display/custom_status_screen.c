@@ -25,7 +25,7 @@ lv_obj_t *zmk_display_status_screen() {
     lv_obj_set_width(top, 128);
     lv_label_set_long_mode(top, LV_LABEL_LONG_CLIP);
     lv_obj_set_style_text_align(top, LV_TEXT_ALIGN_CENTER, 0);
-    lv_label_set_text(top, "Aut Viam Inveniam");
+    lv_label_set_text(top, "Inveniam Viam");
     lv_obj_align(top, LV_ALIGN_TOP_MID, 0, 4);
 
     lv_obj_t *bot = lv_label_create(screen);
