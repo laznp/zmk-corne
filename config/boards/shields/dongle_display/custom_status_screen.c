@@ -29,24 +29,30 @@ static struct zmk_widget_wpm_status wpm_status_widget;
 
 static lv_obj_t *layer_label;
 
-static void update_layer_label(void) {
-    uint8_t index = zmk_keymap_highest_layer_active();
-    const char *name = zmk_keymap_layer_name(index);
-    if (name != NULL) {
-        lv_label_set_text(layer_label, name);
+struct layer_state {
+    uint8_t index;
+    const char *name;
+};
+
+static void layer_update_cb(struct layer_state state) {
+    if (state.name != NULL) {
+        lv_label_set_text(layer_label, state.name);
     } else {
         char buf[4];
-        snprintf(buf, sizeof(buf), "%d", index);
+        snprintf(buf, sizeof(buf), "%d", state.index);
         lv_label_set_text(layer_label, buf);
     }
 }
 
-static int layer_event_handler(const zmk_event_t *eh) {
-    update_layer_label();
-    return ZMK_EV_EVENT_BUBBLE;
+static struct layer_state layer_get_state(const zmk_event_t *eh) {
+    uint8_t index = zmk_keymap_highest_layer_active();
+    return (struct layer_state){
+        .index = index,
+        .name = zmk_keymap_layer_name(index),
+    };
 }
 
-ZMK_LISTENER(layer_status_screen, layer_event_handler);
+ZMK_DISPLAY_WIDGET_LISTENER(layer_status_screen, struct layer_state, layer_update_cb, layer_get_state)
 ZMK_SUBSCRIPTION(layer_status_screen, zmk_layer_state_changed);
 
 lv_style_t global_style;
@@ -65,12 +71,6 @@ lv_obj_t *zmk_display_status_screen() {
     lv_style_set_text_line_space(&global_style, 1);
     lv_obj_add_style(screen, &global_style, LV_PART_MAIN);
 
-    /*
-     * Landscape 128x32 layout:
-     *
-     * [output_status][  Laz  ][layer]
-     */
-
     zmk_widget_output_status_init(&output_status_widget, screen);
     lv_obj_align(zmk_widget_output_status_obj(&output_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
 
@@ -81,6 +81,8 @@ lv_obj_t *zmk_display_status_screen() {
     layer_label = lv_label_create(screen);
     lv_label_set_text(layer_label, "0");
     lv_obj_align(layer_label, LV_ALIGN_RIGHT_MID, -2, 0);
+
+    layer_status_screen_init();
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_WPM)
     zmk_widget_wpm_status_init(&wpm_status_widget, screen);
