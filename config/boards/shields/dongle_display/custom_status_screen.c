@@ -22,10 +22,16 @@ lv_obj_t *zmk_display_status_screen() {
     lv_obj_add_style(screen, &global_style, LV_PART_MAIN);
 
     lv_obj_t *top = lv_label_create(screen);
+    lv_obj_set_width(top, 128);
+    lv_label_set_long_mode(top, LV_LABEL_LONG_CLIP);
+    lv_obj_set_style_text_align(top, LV_TEXT_ALIGN_CENTER, 0);
     lv_label_set_text(top, "Nimis Vetus Vivere,");
     lv_obj_align(top, LV_ALIGN_TOP_MID, 0, 4);
 
     lv_obj_t *bot = lv_label_create(screen);
+    lv_obj_set_width(bot, 128);
+    lv_label_set_long_mode(bot, LV_LABEL_LONG_CLIP);
+    lv_obj_set_style_text_align(bot, LV_TEXT_ALIGN_CENTER, 0);
     lv_label_set_text(bot, "Nimis Iuvenis Mori");
     lv_obj_align(bot, LV_ALIGN_BOTTOM_MID, 0, -4);
 
