@@ -5,16 +5,19 @@
  */
 
 #include "custom_status_screen.h"
-#include "widgets/layer_status.h"
 #include "widgets/output_status.h"
 #include "widgets/hid_indicators.h"
 #include "widgets/wpm_status.h"
+
+#include <zmk/display.h>
+#include <zmk/events/layer_state_changed.h>
+#include <zmk/event_manager.h>
+#include <zmk/keymap.h>
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 static struct zmk_widget_output_status output_status_widget;
-static struct zmk_widget_layer_status layer_status_widget;
 
 #if IS_ENABLED(CONFIG_ZMK_HID_INDICATORS)
 static struct zmk_widget_hid_indicators hid_indicators_widget;
@@ -23,6 +26,28 @@ static struct zmk_widget_hid_indicators hid_indicators_widget;
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_WPM)
 static struct zmk_widget_wpm_status wpm_status_widget;
 #endif
+
+static lv_obj_t *layer_label;
+
+static void update_layer_label(void) {
+    uint8_t index = zmk_keymap_highest_layer_active();
+    const char *name = zmk_keymap_layer_name(index);
+    if (name != NULL) {
+        lv_label_set_text(layer_label, name);
+    } else {
+        char buf[4];
+        snprintf(buf, sizeof(buf), "%d", index);
+        lv_label_set_text(layer_label, buf);
+    }
+}
+
+static int layer_event_handler(const zmk_event_t *eh) {
+    update_layer_label();
+    return ZMK_EV_EVENT_BUBBLE;
+}
+
+ZMK_LISTENER(layer_status_screen, layer_event_handler);
+ZMK_SUBSCRIPTION(layer_status_screen, zmk_layer_state_changed);
 
 lv_style_t global_style;
 
@@ -43,9 +68,7 @@ lv_obj_t *zmk_display_status_screen() {
     /*
      * Landscape 128x32 layout:
      *
-     * x=0        x=22    center         x=127
-     * [sel|USB ok][  Laz  ][layer       ]
-     * [sel|BT 1ok][                     ]
+     * [output_status][  Laz  ][layer]
      */
 
     zmk_widget_output_status_init(&output_status_widget, screen);
@@ -55,8 +78,9 @@ lv_obj_t *zmk_display_status_screen() {
     lv_label_set_text(label_mid, "Laz");
     lv_obj_align(label_mid, LV_ALIGN_CENTER, 0, 0);
 
-    zmk_widget_layer_status_init(&layer_status_widget, screen);
-    lv_obj_align(zmk_widget_layer_status_obj(&layer_status_widget), LV_ALIGN_RIGHT_MID, 0, 0);
+    layer_label = lv_label_create(screen);
+    lv_label_set_text(layer_label, "0");
+    lv_obj_align(layer_label, LV_ALIGN_RIGHT_MID, -2, 0);
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_WPM)
     zmk_widget_wpm_status_init(&wpm_status_widget, screen);
