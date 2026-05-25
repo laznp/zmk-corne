@@ -19,23 +19,27 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #  define ZMK_SPLIT_BLE_PERIPHERAL_COUNT 0
 #endif
 
-LV_IMG_DECLARE(sym_ok);
-LV_IMG_DECLARE(sym_nok);
-
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 struct peripheral_state {
     uint8_t source;
-    bool connected;
+    uint8_t state_of_charge;
+    bool has_data;
 };
 
-static lv_obj_t *status_icons[ZMK_SPLIT_BLE_PERIPHERAL_COUNT];
+static lv_obj_t *battery_labels[ZMK_SPLIT_BLE_PERIPHERAL_COUNT];
 
 static void set_status(lv_obj_t *widget, struct peripheral_state state) {
     if (state.source >= ZMK_SPLIT_BLE_PERIPHERAL_COUNT) {
         return;
     }
-    lv_img_set_src(status_icons[state.source], state.connected ? &sym_ok : &sym_nok);
+    if (!state.has_data) {
+        lv_label_set_text(battery_labels[state.source], "--");
+    } else {
+        char buf[4];
+        snprintf(buf, sizeof(buf), "%d", state.state_of_charge);
+        lv_label_set_text(battery_labels[state.source], buf);
+    }
 }
 
 static void peripheral_status_update_cb(struct peripheral_state state) {
@@ -47,7 +51,8 @@ static struct peripheral_state peripheral_status_get_state(const zmk_event_t *eh
     const struct zmk_peripheral_battery_state_changed *ev = as_zmk_peripheral_battery_state_changed(eh);
     return (struct peripheral_state){
         .source = ev->source,
-        .connected = ev->state_of_charge > 0,
+        .state_of_charge = ev->state_of_charge,
+        .has_data = true,
     };
 }
 
@@ -61,9 +66,9 @@ int zmk_widget_peripheral_status_init(struct zmk_widget_peripheral_status *widge
     lv_obj_set_size(widget->obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
 
     for (int i = 0; i < ZMK_SPLIT_BLE_PERIPHERAL_COUNT; i++) {
-        status_icons[i] = lv_img_create(widget->obj);
-        lv_img_set_src(status_icons[i], &sym_nok);
-        lv_obj_align(status_icons[i], LV_ALIGN_TOP_RIGHT, 0, i * 7);
+        battery_labels[i] = lv_label_create(widget->obj);
+        lv_label_set_text(battery_labels[i], "--");
+        lv_obj_align(battery_labels[i], LV_ALIGN_TOP_RIGHT, 0, i * 10);
     }
 
     sys_slist_append(&widgets, &widget->node);
