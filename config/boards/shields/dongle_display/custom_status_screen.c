@@ -14,7 +14,10 @@
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 static struct zmk_widget_output_status output_status_widget;
+
+#if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_LAYER)
 static struct zmk_widget_layer_status layer_status_widget;
+#endif
 
 #if IS_ENABLED(CONFIG_ZMK_HID_INDICATORS)
 static struct zmk_widget_hid_indicators hid_indicators_widget;
@@ -47,8 +50,10 @@ lv_obj_t *zmk_display_status_screen() {
     lv_label_set_text(label_mid, "Laz");
     lv_obj_align(label_mid, LV_ALIGN_CENTER, 0, 0);
 
+#if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_LAYER)
     zmk_widget_layer_status_init(&layer_status_widget, screen);
-    lv_obj_set_pos(zmk_widget_layer_status_obj(&layer_status_widget), 108, 12);
+    lv_obj_align(zmk_widget_layer_status_obj(&layer_status_widget), LV_ALIGN_BOTTOM_RIGHT, 0, -3);
+#endif
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_WPM)
     zmk_widget_wpm_status_init(&wpm_status_widget, screen);
