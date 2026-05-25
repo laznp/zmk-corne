@@ -22,11 +22,11 @@ lv_obj_t *zmk_display_status_screen() {
     lv_obj_add_style(screen, &global_style, LV_PART_MAIN);
 
     lv_obj_t *top = lv_label_create(screen);
-    lv_label_set_text(top, "Lazu's");
+    lv_label_set_text(top, "Nimis Vetus Vivere,");
     lv_obj_align(top, LV_ALIGN_TOP_MID, 0, 4);
 
     lv_obj_t *bot = lv_label_create(screen);
-    lv_label_set_text(bot, "Property");
+    lv_label_set_text(bot, "Nimis Iuvenis Mori");
     lv_obj_align(bot, LV_ALIGN_BOTTOM_MID, 0, -4);
 
     return screen;
